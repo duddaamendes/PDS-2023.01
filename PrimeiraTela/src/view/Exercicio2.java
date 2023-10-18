@@ -83,7 +83,7 @@ public class Exercicio2 extends JFrame {
 				String Nome = txtNome.getText();
 				String Sobrenome = txtSobrenome.getText();
 				
-				JOptionPane.showMessageDialog(null, "O nome é:"+Nome+" "+Sobrenome);
+				JOptionPane.showMessageDialog(null, "O nome é: "+Nome+" "+Sobrenome);
 			}
 		});
 		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
