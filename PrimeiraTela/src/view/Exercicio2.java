@@ -42,7 +42,7 @@ public class Exercicio2 extends JFrame {
 	 */
 	public Exercicio2() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 314);
+		setBounds(100, 100, 347, 333);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(164, 164, 210));
 		contentPane.setForeground(new Color(164, 164, 210));
@@ -54,25 +54,25 @@ public class Exercicio2 extends JFrame {
 		JLabel lblInfoDados = new JLabel("Informe os dados");
 		lblInfoDados.setForeground(new Color(66, 66, 132));
 		lblInfoDados.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblInfoDados.setBounds(95, 28, 244, 37);
+		lblInfoDados.setBounds(42, 30, 244, 37);
 		contentPane.add(lblInfoDados);
 		
 		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setForeground(new Color(66, 66, 132));
 		lblNome.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNome.setBounds(63, 91, 71, 30);
+		lblNome.setBounds(25, 91, 71, 30);
 		contentPane.add(lblNome);
 		
 		txtNome = new JTextField();
 		txtNome.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		txtNome.setBounds(144, 96, 212, 20);
+		txtNome.setBounds(90, 96, 212, 20);
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
 		
 		JLabel lblSobrenome = new JLabel("Sobrenome:");
 		lblSobrenome.setForeground(new Color(66, 66, 132));
 		lblSobrenome.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblSobrenome.setBounds(63, 141, 116, 30);
+		lblSobrenome.setBounds(25, 141, 116, 30);
 		contentPane.add(lblSobrenome);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
@@ -87,11 +87,11 @@ public class Exercicio2 extends JFrame {
 			}
 		});
 		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnCadastrar.setBounds(162, 202, 122, 30);
+		btnCadastrar.setBounds(42, 202, 244, 30);
 		contentPane.add(btnCadastrar);
 		
 		txtSobrenome = new JTextField();
-		txtSobrenome.setBounds(192, 150, 164, 20);
+		txtSobrenome.setBounds(140, 150, 164, 20);
 		contentPane.add(txtSobrenome);
 		txtSobrenome.setColumns(10);
 		
@@ -105,10 +105,10 @@ public class Exercicio2 extends JFrame {
 		btnLimpar.setForeground(new Color(66, 66, 132));
 		btnLimpar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnLimpar.setBackground(new Color(164, 164, 210));
-		btnLimpar.setBounds(33, 202, 119, 30);
+		btnLimpar.setBounds(171, 243, 119, 30);
 		contentPane.add(btnLimpar);
 		
-		JButton btnFechar = new JButton("Fechar");
+		JButton btnFechar = new JButton("Sair");
 		btnFechar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -117,7 +117,7 @@ public class Exercicio2 extends JFrame {
 		btnFechar.setForeground(new Color(66, 66, 132));
 		btnFechar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnFechar.setBackground(new Color(164, 164, 210));
-		btnFechar.setBounds(291, 202, 119, 30);
+		btnFechar.setBounds(42, 243, 119, 30);
 		contentPane.add(btnFechar);
 	}
 }

@@ -50,7 +50,7 @@ public class Exercicio4 extends JFrame {
 	 */
 	public Exercicio4() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 396, 283);
+		setBounds(100, 100, 372, 316);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(164, 164, 210));
 		contentPane.setForeground(new Color(164, 164, 210));
@@ -60,31 +60,31 @@ public class Exercicio4 extends JFrame {
 		contentPane.setLayout(null);
 		
 		txtPrecoGasolina = new JTextField();
-		txtPrecoGasolina.setBounds(250, 90, 86, 25);
+		txtPrecoGasolina.setBounds(230, 90, 86, 25);
 		contentPane.add(txtPrecoGasolina);
 		txtPrecoGasolina.setColumns(10);
 		
 		JLabel lblPrecoGasolina = new JLabel("Preço gasolina (litro):");
 		lblPrecoGasolina.setForeground(new Color(66, 66, 132));
 		lblPrecoGasolina.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblPrecoGasolina.setBounds(40, 75, 193, 56);
+		lblPrecoGasolina.setBounds(30, 75, 193, 56);
 		contentPane.add(lblPrecoGasolina);
 		
 		lblNewLabel_1 = new JLabel("Preço total:");
 		lblNewLabel_1.setForeground(new Color(66, 66, 132));
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(40, 142, 117, 40);
+		lblNewLabel_1.setBounds(30, 142, 117, 40);
 		contentPane.add(lblNewLabel_1);
 		
 		txtPrecoTotal = new JTextField();
-		txtPrecoTotal.setBounds(160, 150, 86, 25);
+		txtPrecoTotal.setBounds(140, 150, 86, 25);
 		contentPane.add(txtPrecoTotal);
 		txtPrecoTotal.setColumns(10);
 		
 		lblNewLabel = new JLabel("Informe os valores (R$)");
 		lblNewLabel.setForeground(new Color(66, 66, 132));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 28));
-		lblNewLabel.setBounds(28, 22, 342, 57);
+		lblNewLabel.setBounds(10, 22, 342, 57);
 		contentPane.add(lblNewLabel);
 		
 		btnLimpar = new JButton("Limpar");
@@ -97,7 +97,7 @@ public class Exercicio4 extends JFrame {
 		btnLimpar.setForeground(new Color(66, 66, 132));
 		btnLimpar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnLimpar.setBackground(new Color(164, 164, 210));
-		btnLimpar.setBounds(10, 195, 113, 31);
+		btnLimpar.setBounds(183, 229, 113, 31);
 		contentPane.add(btnLimpar);
 		
 		btnSair = new JButton("Sair");
@@ -109,7 +109,7 @@ public class Exercicio4 extends JFrame {
 		btnSair.setForeground(new Color(66, 66, 132));
 		btnSair.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnSair.setBackground(new Color(164, 164, 210));
-		btnSair.setBounds(133, 195, 113, 31);
+		btnSair.setBounds(60, 229, 113, 31);
 		contentPane.add(btnSair);
 		
 		btnCalcular = new JButton("Calcular");
@@ -133,7 +133,7 @@ public class Exercicio4 extends JFrame {
 		btnCalcular.setForeground(new Color(66, 66, 132));
 		btnCalcular.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnCalcular.setBackground(new Color(164, 164, 210));
-		btnCalcular.setBounds(257, 195, 113, 31);
+		btnCalcular.setBounds(60, 193, 237, 31);
 		contentPane.add(btnCalcular);
 	}
 }

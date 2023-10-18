@@ -47,7 +47,7 @@ public class Exercicio1 extends JFrame {
 	 */
 	public Exercicio1() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 369, 220);
+		setBounds(100, 100, 369, 249);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(164, 164, 210));
 		contentPane.setForeground(new Color(164, 164, 210));
@@ -91,7 +91,7 @@ public class Exercicio1 extends JFrame {
 			}
 		});
 		btnCalcular.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnCalcular.setBounds(10, 114, 105, 33);
+		btnCalcular.setBounds(72, 115, 221, 33);
 		contentPane.add(btnCalcular);
 		
 		btnLimpar = new JButton("Limpar");
@@ -103,7 +103,7 @@ public class Exercicio1 extends JFrame {
 		btnLimpar.setForeground(new Color(66, 66, 132));
 		btnLimpar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnLimpar.setBackground(new Color(164, 164, 210));
-		btnLimpar.setBounds(123, 114, 103, 33);
+		btnLimpar.setBounds(190, 155, 103, 33);
 		contentPane.add(btnLimpar);
 		
 		btnSair = new JButton("Sair");
@@ -115,7 +115,7 @@ public class Exercicio1 extends JFrame {
 		btnSair.setForeground(new Color(66, 66, 132));
 		btnSair.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnSair.setBackground(new Color(164, 164, 210));
-		btnSair.setBounds(240, 114, 103, 33);
+		btnSair.setBounds(72, 155, 103, 33);
 		contentPane.add(btnSair);
 		
 		lblNewLabel = new JLabel("Informe:");

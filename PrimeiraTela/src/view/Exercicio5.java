@@ -119,7 +119,7 @@ public class Exercicio5 extends JFrame {
 		btnCalcular.setForeground(new Color(66, 66, 132));
 		btnCalcular.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnCalcular.setBackground(new Color(164, 164, 210));
-		btnCalcular.setBounds(85, 175, 113, 31);
+		btnCalcular.setBounds(30, 175, 236, 31);
 		contentPane.add(btnCalcular);
 	}
 
