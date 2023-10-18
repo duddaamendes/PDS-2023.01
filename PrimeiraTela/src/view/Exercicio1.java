@@ -22,6 +22,9 @@ public class Exercicio1 extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textTempF;
+	private JButton btnLimpar;
+	private JButton btnSair;
+	private JLabel lblNewLabel;
 
 	/**
 	 * Launch the application.
@@ -44,7 +47,7 @@ public class Exercicio1 extends JFrame {
 	 */
 	public Exercicio1() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 345, 204);
+		setBounds(100, 100, 369, 220);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(164, 164, 210));
 		contentPane.setForeground(new Color(164, 164, 210));
@@ -56,11 +59,11 @@ public class Exercicio1 extends JFrame {
 		JLabel lblTempF = new JLabel("Temperatura (F):");
 		lblTempF.setForeground(new Color(66, 66, 132));
 		lblTempF.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblTempF.setBounds(10, 47, 158, 37);
+		lblTempF.setBounds(25, 55, 158, 37);
 		contentPane.add(lblTempF);
 		
 		textTempF = new JTextField();
-		textTempF.setBounds(178, 55, 137, 25);
+		textTempF.setBounds(190, 60, 137, 25);
 		contentPane.add(textTempF);
 		textTempF.setColumns(10);
 		
@@ -88,8 +91,38 @@ public class Exercicio1 extends JFrame {
 			}
 		});
 		btnCalcular.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnCalcular.setBounds(112, 105, 118, 33);
+		btnCalcular.setBounds(10, 114, 105, 33);
 		contentPane.add(btnCalcular);
+		
+		btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textTempF.setText("");
+			}
+		});
+		btnLimpar.setForeground(new Color(66, 66, 132));
+		btnLimpar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnLimpar.setBackground(new Color(164, 164, 210));
+		btnLimpar.setBounds(123, 114, 103, 33);
+		contentPane.add(btnLimpar);
+		
+		btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+			}
+		});
+		btnSair.setForeground(new Color(66, 66, 132));
+		btnSair.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnSair.setBackground(new Color(164, 164, 210));
+		btnSair.setBounds(240, 114, 103, 33);
+		contentPane.add(btnSair);
+		
+		lblNewLabel = new JLabel("Informe:");
+		lblNewLabel.setForeground(new Color(66, 66, 132));
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel.setBounds(129, 11, 97, 37);
+		contentPane.add(lblNewLabel);
 	}
 
 }
