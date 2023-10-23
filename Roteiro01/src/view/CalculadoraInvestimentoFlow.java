@@ -16,6 +16,12 @@ import javax.swing.JButton;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JMenuBar;
+import javax.swing.JComboBox;
+import javax.swing.event.AncestorListener;
+import javax.swing.event.AncestorEvent;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class CalculadoraInvestimentoFlow extends JFrame {
 
@@ -51,7 +57,32 @@ public class CalculadoraInvestimentoFlow extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(5, 2, 0, 0));
+		contentPane.setLayout(new GridLayout(6, 2, 0, 0));
+		
+		JPanel panel_11 = new JPanel();
+		contentPane.add(panel_11);
+		panel_11.setLayout(null);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 11, 52, 22);
+		panel_11.add(menuBar);
+		
+		JMenu mnNewMenu = new JMenu("Ajuda");
+		menuBar.add(mnNewMenu);
+		
+		JMenuItem mntmSobre = new JMenuItem("Sobre");
+		mntmSobre.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "CalcInvest - Calculadora de Investimentos\n"
+						+ "Versão: 1.0\n"
+						+ "Autor(a): Maria Eduarda Mendes\n"
+						+ "Contato: maria.m10@aluno.ifsc.edu.br");
+			}
+		});
+		mnNewMenu.add(mntmSobre);
+		
+		JPanel panel_10 = new JPanel();
+		contentPane.add(panel_10);
 		
 		JPanel panel_3 = new JPanel();
 		contentPane.add(panel_3);
