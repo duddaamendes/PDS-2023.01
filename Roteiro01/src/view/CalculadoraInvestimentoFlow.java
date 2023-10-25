@@ -73,10 +73,13 @@ public class CalculadoraInvestimentoFlow extends JFrame {
 		JMenuItem mntmSobre = new JMenuItem("Sobre");
 		mntmSobre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "CalcInvest - Calculadora de Investimentos\n"
-						+ "Versão: 1.0\n"
-						+ "Autor(a): Maria Eduarda Mendes\n"
-						+ "Contato: maria.m10@aluno.ifsc.edu.br");
+				JanelaSobre janela = new JanelaSobre();
+				janela.setVisible(true);
+				
+				//JOptionPane.showMessageDialog(null, "CalcInvest - Calculadora de Investimentos\n"
+				//		+ "Versão: 1.0\n"
+				//		+ "Autor(a): Maria Eduarda Mendes\n"
+				//		+ "Contato: maria.m10@aluno.ifsc.edu.br");
 			}
 		});
 		mnNewMenu.add(mntmSobre);

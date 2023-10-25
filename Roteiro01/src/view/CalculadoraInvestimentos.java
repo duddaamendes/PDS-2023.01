@@ -6,9 +6,15 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import model.Investimento;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CalculadoraInvestimentos extends JFrame {
 
@@ -78,6 +84,24 @@ public class CalculadoraInvestimentos extends JFrame {
 		contentPane.add(lblTotalInvestido);
 		
 		JButton btnCalcular = new JButton("Calcular");
+		btnCalcular.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Ola");
+				String DepositoMes = txtDepositoMensal.getText();
+				String NumMeses = txtNumMeses.getText();
+				String JurosMes = txtJurosMes.getText();
+				
+				double DepositoC = Double.parseDouble(DepositoMes);
+				int NumMesesC = Integer.parseInt(NumMeses);
+				double JuroMesC = Double.parseDouble(JurosMes);
+				
+				Investimento calc = new Investimento(NumMesesC, DepositoC, JuroMesC);
+				
+				double total = calc.calculaTotal();
+				
+				JOptionPane.showMessageDialog(null, "O total investido + juros R$ fica "+total);
+			}
+		});
 		btnCalcular.setBounds(71, 177, 89, 23);
 		contentPane.add(btnCalcular);
 	}
