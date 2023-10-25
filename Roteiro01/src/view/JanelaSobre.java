@@ -8,6 +8,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.GridLayout;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JanelaSobre extends JFrame {
 
@@ -65,5 +68,14 @@ public class JanelaSobre extends JFrame {
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lblNewLabel_3.setBounds(10, 104, 286, 49);
 		panel.add(lblNewLabel_3);
+		
+		JButton btnOk = new JButton("Ok");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+			}
+		});
+		btnOk.setBounds(94, 159, 89, 23);
+		panel.add(btnOk);
 	}
 }
