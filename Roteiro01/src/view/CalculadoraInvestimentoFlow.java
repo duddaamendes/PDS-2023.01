@@ -17,9 +17,6 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
-import javax.swing.JComboBox;
-import javax.swing.event.AncestorListener;
-import javax.swing.event.AncestorEvent;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
@@ -151,7 +148,7 @@ public class CalculadoraInvestimentoFlow extends JFrame {
 		JButton btnCalcular = new JButton("Calcular");
 		btnCalcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Ola");
+				
 				String DepositoMes = txtDepositoMensal.getText();
 				String NumMeses = txtNumMeses.getText();
 				String JurosMes = txtJurosMes.getText();
