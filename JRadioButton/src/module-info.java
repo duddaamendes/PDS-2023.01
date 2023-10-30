@@ -4,6 +4,6 @@
 /**
  * 
  */
-module RadioButton {
+module JRadioButton {
 	requires java.desktop;
 }
