@@ -231,6 +231,7 @@ public class Exercicio1 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				txtBase.setText("");
 				txtAltura.setText("");
+				lblResposta.setText("");
 			}
 		});
 		btnLimpar.setFont(new Font("Tahoma", Font.PLAIN, 15));

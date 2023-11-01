@@ -14,7 +14,9 @@ public class Calcular {
 		return calcMultiplicacao;
 	}
 	public float divisao (int a, int b) {
-		float calcDivisao = a*b;
+		float aFor = Float.valueOf(a);
+		float bFor = Float.valueOf(b);
+		float calcDivisao = aFor/bFor;
 		return calcDivisao;
 	}
 

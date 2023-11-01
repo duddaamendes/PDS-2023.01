@@ -155,6 +155,7 @@ public class Exercicio2 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				txtPrimeiroNumero.setText("");
 				txtSegundoNumero.setText("");
+				lblResposta.setText("");
 			}
 		});
 		contentPane.add(btnLimpar);
