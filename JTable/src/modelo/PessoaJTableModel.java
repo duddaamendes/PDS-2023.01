@@ -1,5 +1,51 @@
 package modelo;
 
-public class PessoaJTableModel {
+import java.util.ArrayList;
+
+import javax.swing.table.AbstractTableModel;
+
+public class PessoaJTableModel extends AbstractTableModel{
+
+	private ArrayList<Pessoa> lista;
+	private String[] colunas ={"Nome", "CPF", "Telefone","Idade", "Peso", "Altura"};
+	
+	public PessoaJTableModel(ArrayList<Pessoa> lista) {
+		this.lista=lista;
+	}
+	
+	@Override
+	public int getRowCount() {
+		return this.lista.size();
+	}
+
+	@Override
+	public int getColumnCount() {
+		return colunas.length;
+	}
+
+	@Override
+	public Object getValueAt(int rowIndex, int columnIndex) {
+		Pessoa p = lista.get(rowIndex);
+		if(columnIndex == 0) {
+			return p.getNome();
+		} else if(columnIndex == 1) {
+			return p.getCpf();
+		} else if(columnIndex == 1) {
+			return p.getTelefone();
+		} else if(columnIndex == 1) {
+			return p.getIdade();
+		} else if(columnIndex == 1) {
+			return p.getPeso();
+		} else if(columnIndex == 1) {
+			return p.getAltura();
+		}
+		return null;
+	}
+	
+	@Override
+	public String getColumnName(int column) {
+		return colunas[column];
+	}
+
 
 }
