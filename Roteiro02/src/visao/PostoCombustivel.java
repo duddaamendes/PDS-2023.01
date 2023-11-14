@@ -5,13 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import net.miginfocom.swing.MigLayout;
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
@@ -21,10 +17,13 @@ import javax.swing.border.TitledBorder;
 import modelo.Combustiveis;
 import modelo.Combustivel;
 import modelo.Oleo;
+import modelo.Pagamento;
 
 import javax.swing.ButtonGroup;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class PostoCombustivel extends JFrame {
 
@@ -141,25 +140,78 @@ public class PostoCombustivel extends JFrame {
 		JLabel lblNewLabel_6 = new JLabel("Frasco de 500ml");
 		panel_2.add(lblNewLabel_6, "cell 1 1 5 1,alignx right");
 		
-		txtQuantFrascoML = new JTextField();
-		panel_2.add(txtQuantFrascoML, "cell 6 1,alignx center");
-		txtQuantFrascoML.setColumns(10);
-		
 		JLabel lblValorFrascoML = new JLabel("-");
 		panel_2.add(lblValorFrascoML, "cell 9 1,alignx center");
 		
 		JLabel lblTotalOleo = new JLabel("-");
 		panel_2.add(lblTotalOleo, "cell 13 1,alignx center");
 		
+		
+		txtQuantFrascoML = new JTextField();
+		txtQuantFrascoML.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				String precoFrascoML = txtPrecoFrascoML.getText();
+				String quantFrascoML = txtQuantFrascoML.getText();
+				
+				Float precoFrascoMLF = Float.valueOf(precoFrascoML);
+				Float quantFrascoMLF = Float.valueOf(quantFrascoML);
+				
+				Oleo calc = new Oleo();
+				
+				float calculoML = calc.frascoML(precoFrascoMLF, quantFrascoMLF);
+
+				lblValorFrascoML.setText(""+calculoML);
+				
+				
+			}
+		});
+		panel_2.add(txtQuantFrascoML, "cell 6 1,alignx center");
+		txtQuantFrascoML.setColumns(10);
+		
+		
+		
 		JLabel lblNewLabel_18 = new JLabel("Frasco de 1L");
 		panel_2.add(lblNewLabel_18, "cell 1 2 5 1,alignx right");
 		
+		JLabel lblValorFrascoL = new JLabel("-");
+		panel_2.add(lblValorFrascoL, "cell 9 2,alignx center");
+		
 		txtQuantFrascoL = new JTextField();
+		txtQuantFrascoL.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				String precoFrascoL = txtPrecoFrascoML.getText();
+				String quantFrascoL = txtQuantFrascoML.getText();
+				
+				Float precoFrascoLF = Float.valueOf(precoFrascoL);
+				Float quantFrascoLF = Float.valueOf(quantFrascoL);
+				
+				Oleo calc = new Oleo();
+				
+				float calculoL = calc.frascoML(precoFrascoLF, quantFrascoLF);
+
+				lblValorFrascoL.setText(""+calculoL);
+				
+				String precoFrascoML = txtPrecoFrascoML.getText();
+				String quantFrascoML = txtQuantFrascoML.getText();
+				
+				Float precoFrascoMLF = Float.valueOf(precoFrascoML);
+				Float quantFrascoMLF = Float.valueOf(quantFrascoML);
+				
+				
+				float calculoML = calc.frascoML(precoFrascoMLF, quantFrascoMLF);
+
+				float totalOleo = calculoML+calculoL;
+				
+				lblTotalOleo.setText(""+totalOleo);
+				
+			}
+		});
 		panel_2.add(txtQuantFrascoL, "cell 6 2,alignx center");
 		txtQuantFrascoL.setColumns(10);
 		
-		JLabel lblValorFrascoL = new JLabel("-");
-		panel_2.add(lblValorFrascoL, "cell 9 2,alignx center");
+		
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new TitledBorder(null, "Abastecimento", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -179,24 +231,62 @@ public class PostoCombustivel extends JFrame {
 		JLabel lblNewLabel_13 = new JLabel("Quantidade Litros:");
 		panel_3.add(lblNewLabel_13, "cell 1 1");
 		
+		JLabel lblTotalCombustivel = new JLabel("-");
+		panel_3.add(lblTotalCombustivel, "cell 4 2,alignx center");
+		
 		txtQuantLitros = new JTextField();
+		txtQuantLitros.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				String oleoDisel = txtOleoDisel.getText();
+				String gasComum = txtGasComum.getText();
+				String gasAditivada = txtGasAditivada.getText();
+				String Etanol = txtEtanol.getText();
+				String quantLitros = txtQuantLitros.getText();
+				
+				Float oleoDiselF = Float.valueOf(oleoDisel);
+				Float gasComumF = Float.valueOf(gasComum);
+				Float gasAditivadaF = Float.valueOf(gasAditivada);
+				Float etanolF = Float.valueOf(Etanol);
+				Float quantLitrosF = Float.valueOf(quantLitros);
+				
+				Combustivel calcC = new Combustivel();
+				
+				int posicao = comboBox.getSelectedIndex();
+				
+				
+				if (posicao==0) {
+					float totalCob = calcC.total(oleoDiselF, quantLitrosF);
+					lblTotalCombustivel.setText(""+totalCob);
+				} else if (posicao==1) {
+					float totalCob = calcC.total(gasComumF, quantLitrosF);
+					lblTotalCombustivel.setText(""+totalCob);
+				} else if (posicao==2) {
+					float totalCob = calcC.total(gasAditivadaF, quantLitrosF);
+					lblTotalCombustivel.setText(""+totalCob);
+				} else if (posicao==3) {
+					float totalCob = calcC.total(etanolF, quantLitrosF);
+					lblTotalCombustivel.setText(""+totalCob);
+				}
+				
+			}
+		});
 		panel_3.add(txtQuantLitros, "cell 4 1,growx");
 		txtQuantLitros.setColumns(10);
 		
 		JLabel lblNewLabel_14 = new JLabel("Total Combustivel:");
 		panel_3.add(lblNewLabel_14, "cell 1 2");
 		
-		JLabel lblTotalCombustivel = new JLabel("-");
-		panel_3.add(lblTotalCombustivel, "cell 4 2,alignx center");
+
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new TitledBorder(null, "Formas de Pagamento", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		contentPane.add(panel_4, "cell 1 2,grow");
 		panel_4.setLayout(new MigLayout("", "[][][grow]", "[][][]"));
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("À vista");
-		buttonGroup.add(rdbtnNewRadioButton);
-		panel_4.add(rdbtnNewRadioButton, "cell 0 0");
+		JRadioButton rdbtAVista = new JRadioButton("À vista");
+		buttonGroup.add(rdbtAVista);
+		panel_4.add(rdbtAVista, "cell 0 0");
 		
 		JLabel lblNewLabel_16 = new JLabel("Dias:");
 		panel_4.add(lblNewLabel_16, "cell 1 0,alignx trailing");
@@ -205,9 +295,9 @@ public class PostoCombustivel extends JFrame {
 		panel_4.add(txtDias, "cell 2 0,alignx left");
 		txtDias.setColumns(10);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("À prazo");
-		buttonGroup.add(rdbtnNewRadioButton_1);
-		panel_4.add(rdbtnNewRadioButton_1, "cell 0 1");
+		JRadioButton rdbtnAPrazo = new JRadioButton("À prazo");
+		buttonGroup.add(rdbtnAPrazo);
+		panel_4.add(rdbtnAPrazo, "cell 0 1");
 		
 		JLabel lblNewLabel_15 = new JLabel("Total a pagar");
 		panel_4.add(lblNewLabel_15, "cell 0 2,alignx right");
@@ -222,41 +312,25 @@ public class PostoCombustivel extends JFrame {
 		JButton btnCalcular = new JButton("Calcular");
 		btnCalcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String oleoDisel = txtOleoDisel.getText();
-				String gasComum = txtGasComum.getText();
-				String gasAditivada = txtGasAditivada.getText();
-				String Etanol = txtEtanol.getText();
-				String precoFrascoML = txtPrecoFrascoML.getText();
-				String precoFrascoL = txtPrecoFrascoL.getText();
-				String quantFrascoML = txtQuantFrascoML.getText();
-				String quantFrascoL = txtQuantFrascoL.getText();
-				String quantLitros = txtQuantLitros.getText();
+				String totComb = lblTotalCombustivel.getText();
+				String totOleo = lblTotalOleo.getText();
 				String dias = txtDias.getText();
 				
-				Float oleoDiselF = Float.valueOf(oleoDisel);
-				Float gasComumF = Float.valueOf(gasComum);
-				Float gasAditivadaF = Float.valueOf(gasAditivada);
-				Float EtanolF = Float.valueOf(Etanol);
-				Float precoFrascoMLF = Float.valueOf(precoFrascoML);
-				Float precoFrascoLF = Float.valueOf(precoFrascoL);
-				Float quantFrascoMLF = Float.valueOf(quantFrascoML);
-				Float quantFrascoLF = Float.valueOf(quantFrascoL);
-				Float quantLitrosF = Float.valueOf(quantLitros);
-				Float diasF = Float.valueOf(dias);
+				Float totCombF = Float.valueOf(totComb);
+				Float totOleoF = Float.valueOf(totOleo);
+				Integer diasF = Integer.valueOf(dias);
 				
-				Oleo calc = new Oleo();
+				Pagamento calc = new Pagamento();
 				
-				float calculoML = calc.frascoML(precoFrascoMLF, quantFrascoMLF);
-				float calculoL = calc.frascoL(precoFrascoLF, quantFrascoLF);
-				float total = calc.total(calculoML, calculoL);
+				if(rdbtAVista.isSelected()) {
+					Float resp = calc.aVista(totCombF, totOleoF);
+					lblTotalPagar.setText(""+resp);
+					
+				}else if(rdbtnAPrazo.isSelected()) {
+					Float resp = calc.aPrazo(totCombF, totOleoF, diasF);
+					lblTotalPagar.setText(""+resp);
+				}
 				
-				lblValorFrascoML.setText(""+calculoML);
-				lblValorFrascoL.setText(""+calculoL);
-				lblTotalOleo.setText(""+total);
-				
-				Combustivel calcC = new Combustivel();
-				
-				String itemSelecionado
 			}
 		});
 		panel_5.add(btnCalcular, "cell 3 1,alignx center,aligny center");
