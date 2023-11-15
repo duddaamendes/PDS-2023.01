@@ -3,8 +3,8 @@ package modelo;
 public class Pessoa {
 	
 	private String nome;
-	private int cpf;
-	private int telefone;
+	private Long cpf;
+	private Long telefone;
 	private int idade;
 	private float peso;
 	private float altura;
@@ -16,16 +16,16 @@ public class Pessoa {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getCpf() {
+	public long getCpf() {
 		return cpf;
 	}
-	public void setCpf(int cpf) {
+	public void setCpf(Long cpf) {
 		this.cpf = cpf;
 	}
-	public int getTelefone() {
+	public Long getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(int telefone) {
+	public void setTelefone(Long telefone) {
 		this.telefone = telefone;
 	}
 	public int getIdade() {

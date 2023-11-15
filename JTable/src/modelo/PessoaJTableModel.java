@@ -25,21 +25,23 @@ public class PessoaJTableModel extends AbstractTableModel{
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		Pessoa p = lista.get(rowIndex);
-		if(columnIndex == 0) {
-			return p.getNome();
-		} else if(columnIndex == 1) {
-			return p.getCpf();
-		} else if(columnIndex == 1) {
-			return p.getTelefone();
-		} else if(columnIndex == 1) {
-			return p.getIdade();
-		} else if(columnIndex == 1) {
-			return p.getPeso();
-		} else if(columnIndex == 1) {
-			return p.getAltura();
-		}
-		return null;
+	    Pessoa p = lista.get(rowIndex);
+	    switch (columnIndex) {
+	        case 0:
+	            return p.getNome();
+	        case 1:
+	            return p.getCpf();
+	        case 2:
+	            return p.getTelefone();
+	        case 3:
+	            return p.getIdade();
+	        case 4:
+	            return p.getPeso();
+	        case 5:
+	            return p.getAltura();
+	        default:
+	            return null;
+	    }
 	}
 	
 	@Override
