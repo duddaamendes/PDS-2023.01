@@ -28,10 +28,11 @@ public class PopUpEdicao extends Janela {
     private JTextField txtAlturaNovo;
     private JLabel lblIdade;
     private JTextField txtIdadeNovo;
-    private ArrayList<Pessoa> listaPessoas;
 
-    public PopUpEdicao(ArrayList<Pessoa> listaPessoas, Pessoa pessoaSelecionada) {
-        this.listaPessoas = listaPessoas;
+    public PopUpEdicao() {
+    	Pessoa pessoaSelecionada = new Pessoa();
+    	ArrayList<Pessoa> listaPessoas = new ArrayList<Pessoa>();
+    	this.listaPessoas = listaPessoas;
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 403, 259);
@@ -97,16 +98,31 @@ public class PopUpEdicao extends Janela {
         JButton btnAtualizar = new JButton("Atualizar");
         btnAtualizar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	pessoaSelecionada.setNome(txtNomeNovo.getText());
-                pessoaSelecionada.setCpf(Long.parseLong(txtCpfNovo.getText()));
-                pessoaSelecionada.setTelefone(Long.parseLong(txtTelefoneNovo.getText()));
-                pessoaSelecionada.setIdade(Integer.parseInt(txtIdadeNovo.getText()));
-                pessoaSelecionada.setPeso(Float.parseFloat(txtPesoNovo.getText()));
-                pessoaSelecionada.setAltura(Float.parseFloat(txtAlturaNovo.getText()));
+            	String nome = txtNomeNovo.getText();
+            	String cpf = txtCpfNovo.getText();
+            	String tel = txtTelefoneNovo.getText();
+            	String idade = txtIdadeNovo.getText();
+            	String peso = txtPesoNovo.getText();
+            	String alt = txtAlturaNovo.getText();
+            	
+            	Long cpfF = Long.parseLong(cpf);
+            	Long telF = Long.parseLong(tel);
+            	Integer idadeF = Integer.parseInt(idade);
+            	Float pesoF = Float.parseFloat(peso);
+            	Float altF = Float.parseFloat(alt);
+            	
+            	pessoaSelecionada.setNome(nome);
+                pessoaSelecionada.setCpf(cpfF);
+                pessoaSelecionada.setTelefone(telF);
+                pessoaSelecionada.setIdade(idadeF);
+                pessoaSelecionada.setPeso(pesoF);
+                pessoaSelecionada.setAltura(altF);
+                
+                listaPessoas.add(pessoaSelecionada);
 
                 atualizarJTableModel();
 
-                dispose();
+                setVisible(false);
             }
         });
         btnAtualizar.setBounds(148, 156, 95, 23);
@@ -129,29 +145,32 @@ public class PopUpEdicao extends Janela {
         JButton Cancelar = new JButton("Cancelar");
         Cancelar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Fechar a janela de edição sem salvar as alterações
-                dispose();
+                setVisible(false);
             }
         });
         Cancelar.setBounds(253, 156, 95, 23);
         contentPane.add(Cancelar);
 
-        // Preencher os campos com os valores da pessoaSelecionada
         if (pessoaSelecionada != null) {
-            txtNomeNovo.setText(pessoaSelecionada.getNome());
-            txtCpfNovo.setText(String.valueOf(pessoaSelecionada.getCpf()));
-            txtTelefoneNovo.setText(String.valueOf(pessoaSelecionada.getTelefone()));
-            txtIdadeNovo.setText(String.valueOf(pessoaSelecionada.getIdade()));
-            txtPesoNovo.setText(String.valueOf(pessoaSelecionada.getPeso()));
-            txtAlturaNovo.setText(String.valueOf(pessoaSelecionada.getAltura()));
-        }
-    }
-
-    public void atualizarJTableModel() {
-        // Atualizar a tabela na janela principal
-        if (listaPessoas != null) {
-            Janela parentWindow = (Janela) getOwner();
-            parentWindow.atualizarJTableModel();
+        	String nome = pessoaSelecionada.getNome();
+        	Long cpf = pessoaSelecionada.getCpf();
+        	Long tel = pessoaSelecionada.getTelefone();
+        	Integer idade = pessoaSelecionada.getIdade();
+        	Float peso = pessoaSelecionada.getPeso();
+        	Float altura = pessoaSelecionada.getAltura();
+        	
+        	String cpfF = String.valueOf(cpf);
+        	String telF = String.valueOf(tel);
+        	String idadeF = String.valueOf(idade);
+        	String pesoF = String.valueOf(peso);
+        	String altF = String.valueOf(altura);
+        	
+            txtNomeNovo.setText(nome);
+            txtCpfNovo.setText(cpfF);
+            txtTelefoneNovo.setText(telF);
+            txtIdadeNovo.setText(idadeF);
+            txtPesoNovo.setText(pesoF);
+            txtAlturaNovo.setText(altF);
         }
     }
 }

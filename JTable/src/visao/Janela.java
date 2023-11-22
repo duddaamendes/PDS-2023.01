@@ -116,17 +116,20 @@ public class Janela extends JFrame {
 				String peso = txtPeso.getText();
 				String altura = txtAltura.getText();
 				
+				Long cpfF = Long.parseLong(cpf);
+            	Long telF = Long.parseLong(telefone);
+            	Integer idadeF = Integer.parseInt(idade);
+            	Float pesoF = Float.parseFloat(peso);
+            	Float altF = Float.parseFloat(altura);
+				
+				
 				Pessoa p = new Pessoa();
 				p.setNome(nome);
-				p.setCpf(Long.parseLong(cpf));
-				p.setTelefone(Long.parseLong(telefone));
-				System.out.println(""+telefone);
-				p.setIdade(Integer.parseInt(idade));
-				System.out.println(""+idade);
-				p.setPeso(Float.parseFloat(peso));
-				System.out.println(""+peso);
-				p.setAltura(Float.parseFloat(altura));
-				System.out.println(""+altura);
+				p.setCpf(cpfF);
+				p.setTelefone(telF);
+				p.setIdade(idadeF);
+				p.setPeso(pesoF);
+				p.setAltura(altF);
 				
 				listaPessoas.add(p);
 				
@@ -156,13 +159,48 @@ public class Janela extends JFrame {
 		btnNewButton_2 = new JButton("Alterar");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int idx_linha = table.getSelectedRow();
-				Pessoa pessoaSelecionada = listaPessoas.get(idx_linha);
+				Pessoa p = listaPessoas.get(table.getSelectedRow());
+				String nome = txtNome.getText();
+				String cpf= txtCPF.getText();
+				String telefone = txtTelefone.getText();
+				String idade = txtIdade.getText();
+				String peso = txtPeso.getText();
+				String altura = txtAltura.getText();
 				
-				PopUpEdicao popUpEdicao = new PopUpEdicao(listaPessoas, pessoaSelecionada);
-		        popUpEdicao.setVisible(true);
+				Long cpfF = Long.parseLong(cpf);
+				Long tel = Long.parseLong(telefone);
+				Integer id = Integer.parseInt(idade);
+				Float pesoF = Float.parseFloat(peso);
+				Float alt = Float.parseFloat(altura);
+				
+				p.setNome(nome);
+				p.setCpf(cpfF);
+				p.setTelefone(tel);
+				p.setIdade(id);
+				p.setPeso(pesoF);
+				p.setAltura(alt);
+				
+				atualizarJTableModel();
+				limparCampos();
+				
+				
+				//int idx_linha = table.getSelectedRow();
+				
+				//listaPessoas.remove(idx_linha);
+				//atualizarJTableModel();
+				
+				//PopUpEdicao popUpEdicao = new PopUpEdicao();
+				
+				//popUpEdicao.atualizarJTableModel();
+				
+				
+				//Pessoa pessoaSelecionada = listaPessoas.get(idx_linha);
+				
+				//pessoaSelecionada.setText();
+				
+		        //popUpEdicao.setVisible(true);
 		        
-		        atualizarJTableModel();
+		        //atualizarJTableModel();
 			}
 		});
 		btnNewButton_2.setBounds(310, 139, 95, 23);
