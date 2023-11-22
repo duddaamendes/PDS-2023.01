@@ -64,7 +64,7 @@ public class Janela extends JFrame {
 	 */
 	public Janela() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 519, 388);
+		setBounds(100, 100, 519, 417);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -72,7 +72,7 @@ public class Janela extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(28, 173, 447, 152);
+		scrollPane.setBounds(29, 202, 447, 152);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -110,7 +110,7 @@ public class Janela extends JFrame {
 		contentPane.add(txtCPF);
 		txtCPF.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Adicionar");
+		JButton btnNewButton = new JButton("Adicionar pessoa a tabela");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nome = txtNome.getText();
@@ -140,7 +140,7 @@ public class Janela extends JFrame {
 				limparCampos();
 			}
 		});
-		btnNewButton.setBounds(159, 139, 95, 23);
+		btnNewButton.setBounds(94, 139, 299, 23);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Excluir");
@@ -152,7 +152,7 @@ public class Janela extends JFrame {
 				limparCampos();
 			}
 		});
-		btnNewButton_1.setBounds(54, 139, 95, 23);
+		btnNewButton_1.setBounds(94, 168, 95, 23);
 		contentPane.add(btnNewButton_1);
 		
 		btnNewButton_2 = new JButton("Alterar");
@@ -202,7 +202,7 @@ public class Janela extends JFrame {
 		        //atualizarJTableModel();
 			}
 		});
-		btnNewButton_2.setBounds(260, 139, 95, 23);
+		btnNewButton_2.setBounds(199, 168, 95, 23);
 		contentPane.add(btnNewButton_2);
 		
 		JLabel lblTelefone = new JLabel("Telefone");
@@ -247,7 +247,7 @@ public class Janela extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnFechar.setBounds(365, 139, 89, 23);
+		btnFechar.setBounds(304, 168, 89, 23);
 		contentPane.add(btnFechar);
 	}
 	
