@@ -14,5 +14,10 @@ public class Pagamento {
 		float result = valorTot+desc;
 		return result;
 	}
+	
+	public float aPrazoTrinta (float oleo, float comb) {
+		float valorTot = oleo+comb;
+		return valorTot;
+	}
 
 }

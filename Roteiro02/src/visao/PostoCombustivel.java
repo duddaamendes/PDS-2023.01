@@ -330,7 +330,7 @@ public class PostoCombustivel extends JFrame {
 					String dias = txtDias.getText();
 					Integer diasF = Integer.valueOf(dias);
 					if (diasF<30) {
-						float resp = calc.aVista(totCombF, totOleoF);
+						float resp = calc.aPrazoTrinta(totCombF, totOleoF);
 						lblTotalPagar.setText(""+resp);
 					} else {
 						float resp = calc.aPrazo(totCombF, totOleoF, diasF);
