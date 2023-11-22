@@ -307,18 +307,16 @@ public class PostoCombustivel extends JFrame {
 		
 		JPanel panel_5 = new JPanel();
 		contentPane.add(panel_5, "cell 0 3 2 1,alignx center,aligny top");
-		panel_5.setLayout(new MigLayout("", "[][][][][][][][][][][][][][]", "[][]"));
+		panel_5.setLayout(new MigLayout("", "[][][][][][][][][][][][][][][][]", "[][]"));
 		
-		JButton btnCalcular = new JButton("Calcular");
+		JButton btnCalcular = new JButton("Calcular resultado");
 		btnCalcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String totComb = lblTotalCombustivel.getText();
 				String totOleo = lblTotalOleo.getText();
-				String dias = txtDias.getText();
 				
 				Float totCombF = Float.valueOf(totComb);
 				Float totOleoF = Float.valueOf(totOleo);
-				Integer diasF = Integer.valueOf(dias);
 				
 				Pagamento calc = new Pagamento();
 				
@@ -327,13 +325,14 @@ public class PostoCombustivel extends JFrame {
 					lblTotalPagar.setText(""+resp);
 					
 				}else if(rdbtnAPrazo.isSelected()) {
+					String dias = txtDias.getText();
+					Integer diasF = Integer.valueOf(dias);
 					Float resp = calc.aPrazo(totCombF, totOleoF, diasF);
 					lblTotalPagar.setText(""+resp);
 				}
 				
 			}
 		});
-		panel_5.add(btnCalcular, "cell 3 1,alignx center,aligny center");
 		
 		JButton btnNovoCalculo = new JButton("Novo Calculo");
 		btnNovoCalculo.addActionListener(new ActionListener() {
@@ -355,15 +354,16 @@ public class PostoCombustivel extends JFrame {
 				lblTotalPagar.setText("-");
 			}
 		});
-		panel_5.add(btnNovoCalculo, "cell 6 1,alignx center,aligny center");
+		panel_5.add(btnNovoCalculo, "cell 4 1,alignx center,aligny center");
+		panel_5.add(btnCalcular, "cell 6 1 3 1,alignx center,aligny center");
 		
-		JButton btnFechar = new JButton("Fechar");
+		JButton btnFechar = new JButton("Fechar tela");
 		btnFechar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 			}
 		});
-		panel_5.add(btnFechar, "cell 9 1,alignx center,aligny center");
+		panel_5.add(btnFechar, "cell 10 1,alignx center,aligny center");
 	}
 
 }
