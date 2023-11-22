@@ -79,21 +79,25 @@ public class Janela extends JFrame {
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
 				int linha = table.getSelectedRow();
 				Pessoa pessoaSelecionada = listaPessoas.get(linha);
-				JOptionPane.showMessageDialog(null, "Pessoa Selecionada: "+pessoaSelecionada.getNome());
+				txtNome.setText(pessoaSelecionada.getNome());
+				txtCPF.setText(String.valueOf(pessoaSelecionada.getCpf()));
+				txtTelefone.setText(String.valueOf(pessoaSelecionada.getTelefone()));
+				txtIdade.setText(String.valueOf(pessoaSelecionada.getIdade()));
+				txtPeso.setText(String.valueOf(pessoaSelecionada.getIdade()));
+				txtAltura.setText(String.valueOf(pessoaSelecionada.getAltura()));		
 			}
 		});
 		atualizarJTableModel();
 		scrollPane.setViewportView(table);
 		
 		labelNome = new JLabel("Nome");
-		labelNome.setBounds(100, 11, 46, 14);
+		labelNome.setBounds(54, 11, 46, 14);
 		contentPane.add(labelNome);
 		
 		txtNome = new JTextField();
-		txtNome.setBounds(100, 28, 305, 20);
+		txtNome.setBounds(54, 28, 400, 20);
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
 		
@@ -102,7 +106,7 @@ public class Janela extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		txtCPF = new JTextField();
-		txtCPF.setBounds(260, 70, 145, 20);
+		txtCPF.setBounds(260, 70, 194, 20);
 		contentPane.add(txtCPF);
 		txtCPF.setColumns(10);
 		
@@ -121,8 +125,7 @@ public class Janela extends JFrame {
             	Integer idadeF = Integer.parseInt(idade);
             	Float pesoF = Float.parseFloat(peso);
             	Float altF = Float.parseFloat(altura);
-				
-				
+            	
 				Pessoa p = new Pessoa();
 				p.setNome(nome);
 				p.setCpf(cpfF);
@@ -135,13 +138,9 @@ public class Janela extends JFrame {
 				
 				atualizarJTableModel();
 				limparCampos();
-				
-				
-				
-				
 			}
 		});
-		btnNewButton.setBounds(205, 139, 95, 23);
+		btnNewButton.setBounds(159, 139, 95, 23);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Excluir");
@@ -153,7 +152,7 @@ public class Janela extends JFrame {
 				limparCampos();
 			}
 		});
-		btnNewButton_1.setBounds(100, 139, 95, 23);
+		btnNewButton_1.setBounds(54, 139, 95, 23);
 		contentPane.add(btnNewButton_1);
 		
 		btnNewButton_2 = new JButton("Alterar");
@@ -203,44 +202,53 @@ public class Janela extends JFrame {
 		        //atualizarJTableModel();
 			}
 		});
-		btnNewButton_2.setBounds(310, 139, 95, 23);
+		btnNewButton_2.setBounds(260, 139, 95, 23);
 		contentPane.add(btnNewButton_2);
 		
 		JLabel lblTelefone = new JLabel("Telefone");
-		lblTelefone.setBounds(100, 55, 69, 14);
+		lblTelefone.setBounds(54, 55, 69, 14);
 		contentPane.add(lblTelefone);
 		
 		txtTelefone = new JTextField();
 		txtTelefone.setColumns(10);
-		txtTelefone.setBounds(100, 70, 145, 20);
+		txtTelefone.setBounds(54, 70, 191, 20);
 		contentPane.add(txtTelefone);
 		
 		txtIdade = new JTextField();
 		txtIdade.setColumns(10);
-		txtIdade.setBounds(310, 110, 95, 20);
+		txtIdade.setBounds(320, 108, 134, 20);
 		contentPane.add(txtIdade);
 		
 		JLabel lblIdade = new JLabel("Idade");
-		lblIdade.setBounds(310, 95, 46, 14);
+		lblIdade.setBounds(320, 95, 46, 14);
 		contentPane.add(lblIdade);
 		
 		lblPeso = new JLabel("Peso");
-		lblPeso.setBounds(100, 95, 46, 14);
+		lblPeso.setBounds(54, 95, 46, 14);
 		contentPane.add(lblPeso);
 		
 		txtPeso = new JTextField();
 		txtPeso.setColumns(10);
-		txtPeso.setBounds(100, 110, 95, 20);
+		txtPeso.setBounds(54, 108, 111, 20);
 		contentPane.add(txtPeso);
 		
 		txtAltura = new JTextField();
 		txtAltura.setColumns(10);
-		txtAltura.setBounds(205, 110, 95, 20);
+		txtAltura.setBounds(186, 108, 120, 20);
 		contentPane.add(txtAltura);
 		
 		lblAtura = new JLabel("Altura");
-		lblAtura.setBounds(205, 95, 46, 14);
+		lblAtura.setBounds(186, 95, 46, 14);
 		contentPane.add(lblAtura);
+		
+		JButton btnFechar = new JButton("Fechar");
+		btnFechar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+			}
+		});
+		btnFechar.setBounds(365, 139, 89, 23);
+		contentPane.add(btnFechar);
 	}
 	
 	public void atualizarJTableModel() {

@@ -162,8 +162,7 @@ public class PostoCombustivel extends JFrame {
 				float calculoML = calc.frascoML(precoFrascoMLF, quantFrascoMLF);
 
 				lblValorFrascoML.setText(""+calculoML);
-				
-				
+
 			}
 		});
 		panel_2.add(txtQuantFrascoML, "cell 6 1,alignx center");
@@ -181,24 +180,27 @@ public class PostoCombustivel extends JFrame {
 		txtQuantFrascoL.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
-				String precoFrascoL = txtPrecoFrascoML.getText();
-				String quantFrascoL = txtQuantFrascoML.getText();
+				String precoFrascoL = txtPrecoFrascoL.getText();
+				String quantFrascoL = txtQuantFrascoL.getText();
 				
 				Float precoFrascoLF = Float.valueOf(precoFrascoL);
 				Float quantFrascoLF = Float.valueOf(quantFrascoL);
 				
 				Oleo calc = new Oleo();
 				
-				float calculoL = calc.frascoML(precoFrascoLF, quantFrascoLF);
+				float calculoL = calc.frascoL(precoFrascoLF, quantFrascoLF);
 
 				lblValorFrascoL.setText(""+calculoL);
+				
+				//String valorML = lblValorFrascoML.getText();
+				
+				//Float valorMLF = Float.valueOf(valorML);
 				
 				String precoFrascoML = txtPrecoFrascoML.getText();
 				String quantFrascoML = txtQuantFrascoML.getText();
 				
 				Float precoFrascoMLF = Float.valueOf(precoFrascoML);
 				Float quantFrascoMLF = Float.valueOf(quantFrascoML);
-				
 				
 				float calculoML = calc.frascoML(precoFrascoMLF, quantFrascoMLF);
 
@@ -321,14 +323,19 @@ public class PostoCombustivel extends JFrame {
 				Pagamento calc = new Pagamento();
 				
 				if(rdbtAVista.isSelected()) {
-					Float resp = calc.aVista(totCombF, totOleoF);
+					float resp = calc.aVista(totCombF, totOleoF);
 					lblTotalPagar.setText(""+resp);
 					
 				}else if(rdbtnAPrazo.isSelected()) {
 					String dias = txtDias.getText();
 					Integer diasF = Integer.valueOf(dias);
-					Float resp = calc.aPrazo(totCombF, totOleoF, diasF);
-					lblTotalPagar.setText(""+resp);
+					if (diasF<30) {
+						float resp = calc.aVista(totCombF, totOleoF);
+						lblTotalPagar.setText(""+resp);
+					} else {
+						float resp = calc.aPrazo(totCombF, totOleoF, diasF);
+						lblTotalPagar.setText(""+resp);
+					}
 				}
 				
 			}
