@@ -25,7 +25,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Janela extends JFrame {
+public class JanelaParaPopUp extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -35,7 +35,7 @@ public class Janela extends JFrame {
 	private JLabel lblNewLabel;
 	private JTextField txtCPF;
 	ArrayList<Pessoa> listaPessoas = new ArrayList<Pessoa>();
-	private JButton btnNewButton_2;
+	private JButton btnAlterar;
 	private JTextField txtTelefone;
 	private JTextField txtIdade;
 	private JLabel lblPeso;
@@ -62,7 +62,7 @@ public class Janela extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Janela() {
+	public JanelaParaPopUp() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 519, 417);
 		contentPane = new JPanel();
@@ -76,19 +76,6 @@ public class Janela extends JFrame {
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
-		table.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				int linha = table.getSelectedRow();
-				Pessoa pessoaSelecionada = listaPessoas.get(linha);
-				txtNome.setText(pessoaSelecionada.getNome());
-				txtCPF.setText(String.valueOf(pessoaSelecionada.getCpf()));
-				txtTelefone.setText(String.valueOf(pessoaSelecionada.getTelefone()));
-				txtIdade.setText(String.valueOf(pessoaSelecionada.getIdade()));
-				txtPeso.setText(String.valueOf(pessoaSelecionada.getIdade()));
-				txtAltura.setText(String.valueOf(pessoaSelecionada.getAltura()));		
-			}
-		});
 		atualizarJTableModel();
 		scrollPane.setViewportView(table);
 		
@@ -155,36 +142,21 @@ public class Janela extends JFrame {
 		btnNewButton_1.setBounds(94, 168, 95, 23);
 		contentPane.add(btnNewButton_1);
 		
-		btnNewButton_2 = new JButton("Alterar");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		btnAlterar = new JButton("Alterar");
+		JanelaParaPopUp estaJanela = this;
+		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Pessoa p = listaPessoas.get(table.getSelectedRow());
-				String nome = txtNome.getText();
-				String cpf= txtCPF.getText();
-				String telefone = txtTelefone.getText();
-				String idade = txtIdade.getText();
-				String peso = txtPeso.getText();
-				String altura = txtAltura.getText();
+				int linha = table.getSelectedRow();
+				Pessoa pessoaSelecionada = listaPessoas.get(linha);
 				
-				Long cpfF = Long.parseLong(cpf);
-				Long tel = Long.parseLong(telefone);
-				Integer id = Integer.parseInt(idade);
-				Float pesoF = Float.parseFloat(peso);
-				Float alt = Float.parseFloat(altura);
+				PopUpEdicao janelaAlterar = new PopUpEdicao(pessoaSelecionada, estaJanela);
+				janelaAlterar.setVisible(true);
 				
-				p.setNome(nome);
-				p.setCpf(cpfF);
-				p.setTelefone(tel);
-				p.setIdade(id);
-				p.setPeso(pesoF);
-				p.setAltura(alt);
 				
-				atualizarJTableModel();
-				limparCampos();
 			}
 		});
-		btnNewButton_2.setBounds(199, 168, 95, 23);
-		contentPane.add(btnNewButton_2);
+		btnAlterar.setBounds(199, 168, 95, 23);
+		contentPane.add(btnAlterar);
 		
 		JLabel lblTelefone = new JLabel("Telefone");
 		lblTelefone.setBounds(54, 55, 69, 14);
@@ -244,5 +216,12 @@ public class Janela extends JFrame {
 		txtIdade.setText("");
 		txtPeso.setText("");
 		txtAltura.setText("");
+	}
+	
+	public void atualizarDadosPessoa(Pessoa pessoa) {
+		int linhaSelecionada = table.getSelectedRow();
+		listaPessoas.set(linhaSelecionada, pessoa);
+		
+		atualizarJTableModel();
 	}
 }
